@@ -1,0 +1,21 @@
+{% extends 'app/baseTwo.html' %}
+{% load static %}
+
+{% block title %}Day Plan{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/dayplan.css' %}">
+<script src="{% static 'app/dayplan.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div id="event-container">
+    <h1>Todays Events</h1>
+    {% for event in events %}
+    <div class="event-holder">
+        <div class="event" id="event-{{ event.id }}"><h2>{{ event.name }}</h2></div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

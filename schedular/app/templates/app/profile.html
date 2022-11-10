@@ -1,0 +1,50 @@
+{% extends 'app/basetwo.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/profile.css' %}">
+<script src="{% static 'app/profile.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+<!-- The background that blocks access to rest of page -->
+<div class='block-background'></div>
+<!-- The container for editing profile -->
+<div class="edit-profile-container">
+    <div class="exit">x</div>
+    <div class='edit-profile-header'>Edit Profile</div>
+    <form class="edit-profile-form" method="GET" action="{% url 'app:edit-profile' %}">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="name" id="floatingInput" placeholder="username123">
+            <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" name="birthday" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Birthday</label>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto mb-3">
+            <button class="btn btn-primary" id="button" type="submit">Save Data</button>
+        </div>
+    </form>
+</div>
+<div class="user-container">
+    <div>
+        <div class="profile-picture-container">
+            <img class="profile-picture" src="{% static 'app/profile.jpeg' %}" alt="Profile Picture">
+        </div>
+    </div>
+    <div class='user-information-container'>
+        <div class="name">
+            <h2>Name</h2>
+            <p>{{ name }}</p>
+        </div>
+        <div class="age">
+            <h2>Age</h2>
+            <p>{{ age }}</p>
+        </div>
+        <div class='edit-btn'>Edit Profile</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,158 @@
+body#background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(25, 39, 52);
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 78px;
+    background-color: rgba(255, 255, 255, .35);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+nav.active {
+    width: 240px;
+}
+
+nav #btn {
+    position: absolute;
+    left: 55%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
+    border-radius: 12px;
+}
+
+#btn:hover {
+    background-color: #fff;
+}
+
+nav #logo-content #logo  {
+    position: absolute;
+    top: 6px;
+    left: 7px;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+nav.active #logo-content #logo {
+    opacity: 1;
+    pointer-events: none;
+}
+
+nav #logo-content #logo i {
+    font-size: 28px;
+    margin-right: 5px;
+}
+
+nav #logo-content #logo .logo-name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+nav.active #btn {
+    left: 85%;
+}
+
+nav #nav-list {
+    position: absolute;
+    top: 75px;
+    width: 100%;
+}
+
+nav #nav-list div {
+    width: 90%;
+    margin: 0 auto;
+    height: 50px;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+}
+
+nav #nav-list div:hover {
+    background-color: white;
+}
+
+nav #nav-list div a {
+    color: #000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+nav #nav-list div i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+}
+
+nav span {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+ 
+nav.active span {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+nav #nav-list div .tooltip {
+    position: relative;
+    top: -75px;
+    left: 120%;
+    width: fit-content;
+    background-color: white;
+    border-radius: 6px;
+    opacity: 0;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+    pointer-events: none;
+    display: block;
+}
+
+nav #nav-list div:hover .tooltip {
+    opacity: 1;
+    top: -45px;
+}
+
+nav.active #nav-list div:hover .tooltip {
+    opacity: 0;
+}
+
+main {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: calc(100% - 68px);
+    z-index: 0;
+    transition: all 0.5s ease;
+}
+
+main.active {
+    width: calc(100% - 230px);
+}

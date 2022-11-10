@@ -1,0 +1,119 @@
+.user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.profile-picture {
+    height: 35vh;
+    width: 35vh;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, .35);
+    transition: all 0.5s ease;
+}
+
+.profile-picture:hover {
+    height: 37vh;
+    width: 37vh;
+    border: 5px solid #d8dbdc;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+}
+
+.user-information-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 40%;
+    margin-top: 3%;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, .35);
+    border-radius: 12px;
+}
+
+.user-information-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn {
+    margin-top: 5%;
+    border-radius: 12px;
+    padding: .8rem;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Functionality for edit profile */
+.edit-profile-container {
+    position: absolute;
+    left: -150%;
+    top: calc(50% - 40vh);
+    height: 80vh;
+    width: 45vw;
+    border-radius: 12px;
+    background: rgb(215, 215, 215);
+    overflow: scroll;
+    transition: all 0.5s ease;
+}
+
+.edit-profile-container.active {
+    left: calc(50% - 22.5vw);
+    z-index: 3;
+}
+
+.block-background {
+    position: absolute;
+    right: 150%;
+    height: 150%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+.block-background.active {
+    z-index: 2;
+    right: 0;
+}
+
+.edit-profile-container .exit {
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.edit-profile-container .exit:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.edit-profile-container .edit-profile-header {
+    position: relative;
+    top: 8px;
+    height: 10%;
+    width: 75%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.edit-profile-container .edit-profile-form {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}

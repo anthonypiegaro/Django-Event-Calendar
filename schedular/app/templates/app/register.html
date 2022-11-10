@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/register.css' %}">
+<script src="{% static 'app/register.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1>Register</h1>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="username123">
+        <label for="floatingInput">Username</label>
+    </div>
+    <div id="username-checklist">
+        <div id="username-length-note"></div>
+        <div id="username-unique-note"></div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+    </div>
+    <div id="password-checklist">
+        <div id="password-length-note"></div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="floatingPasswordTwo" placeholder="Password">
+        <label for="floatingPassword">Password Confirmation</label>
+    </div>
+    <div id="passwordTwo-checklist">
+        <div id="password-same-note"></div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto mb-3">
+        <button class="btn btn-primary" id="button" type="submit" disabled>Create Account</button>
+    </div>
+    <p>Have an account? <a href="{% url 'app:login' %}">Login</a></p>
+</main>
+{% endblock %}

@@ -1,0 +1,294 @@
+/* CSS for the calendar */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.calendar-container {
+    position: relative;
+    top: 0;
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, .35);
+    transition: all 0.5s ease;
+}
+
+.event-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.calendar {
+    border: 2px solid black;
+    height: fit-content;
+    width: 90%;
+    box-sizing: content-box;
+}
+
+.month {
+    border: 2px solid black;
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5% 1rem;
+}
+
+.prev, .next {
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+}
+
+.prev:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.month .date {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.weekdays {
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    padding-top: 2.5%;
+    border: 2px solid black;
+    height: 2.5rem;
+}
+
+.days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+ 
+.days > div {
+    width: calc(100% / 7);
+    height: 5rem;
+    border: 1.5px solid black;
+    padding: 0.1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+/* CSS for the templates */
+.event-container {
+    width: 90%;
+    height: 10%;
+    margin: 5% auto;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.event-container .accordian-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    border: 3px solid black;
+    border-radius: 12px 12px 0 0;
+    height: 100%;
+    font-size: 1.5rem;
+    font-weight: 400;
+    white-space: nowrap;
+    background-color: rgba(255, 255, 255, .35);
+}
+
+.event-container .accordian-panel {
+    height: 0;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.event-container.expanded .accordian-panel {
+    height: 200%;
+    border: 3px solid black;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    background-color: rgb(180, 180, 180);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: scroll;
+}
+
+.event-container.expanded ~ .calendar-container {
+    top: 20%;
+}
+
+.event-container .accordian-header .accordian-logo {
+    position: absolute;
+    left: 88%;
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 0.4s ease;
+}
+
+.event-container .accordian-header a {
+    position: absolute;
+    right: 88%;
+    padding: 12px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.event-container .accordian-header a:hover {
+    background-color: #fff;
+}
+ 
+.accordian-header .accordian-logo:hover {
+    background-color: #fff;
+}
+
+.event-container.expanded .accordian-header .accordian-logo {
+    transform: rotate(180deg);
+}
+
+.event {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: .1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.wellness-questionaire {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: .1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wellness-questionaire:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.eventTemplate {
+    position: relative;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: .1rem;
+    text-align: center;
+    cursor: grab;
+    margin: 1% 5%;
+    transition: all 0.4s ease;
+}
+
+.eventTemplate:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.eventTemplate.dragging {
+    opacity: 0.5;
+}
+
+.eventTemplate i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    padding: 3px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.eventTemplate i:hover {
+    background: #fff;
+}
+
+.event.dragging {
+    opacity: 0.5;
+}
+
+/* CSS for the forms */
+
+.block-background {
+    position: absolute;
+    right: 150%;
+    height: 150%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+.block-background.active {
+    z-index: 2;
+    right: 0;
+}
+
+.form-container {
+    position: absolute;
+    left: -150%;
+    top: calc(50% - 40vh);
+    height: 80vh;
+    width: 45vw;
+    border-radius: 12px;
+    background: #fff;
+    overflow: scroll;
+    transition: all 0.5s ease;
+}
+
+.form-container.active {
+    left: calc(50% - 22.5vw);
+    z-index: 3;
+}
+
+.form-container .exit {
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.form-container .exit:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.form-container .form-header {
+    position: relative;
+    top: 8px;
+    height: 10%;
+    width: 75%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-container form {
+    margin: 1%;
+    padding: 1%;
+}

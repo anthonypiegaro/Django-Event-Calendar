@@ -1,0 +1,55 @@
+{% extends 'app/baseTwo.html' %}
+{% load static %}
+
+{% block title %}Calendar{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'app/calendar.css' %}">
+<script src="{% static 'app/calendar.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+    <div class='block-background'></div>
+    <!-- form container -->
+    <div class="form-container">
+        <div class="exit">x</div>
+        <div class='form-header'></div>
+        <form>
+        </form>
+    </div>
+    <!-- accordian -->
+    <div class="event-container">
+        <div class="accordian-header">
+            <a href="#" id="add-event-template">
+                <i class='bx bx-plus addBtn' ></i>
+            </a>
+            <div class="accordian-title">Event Templates</div>
+            <i class='bx bx-down-arrow-alt accordian-logo'></i>
+        </div>
+        <div class="accordian-panel">
+            {% for template in templates %}
+            <div class="eventTemplate" id='{{ template.id }}' draggable="true"><i class='bx bx-trash'></i>{{ template.name }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Calendar html -->
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="month">
+                <i class='bx bx-left-arrow-alt prev'></i>
+                <div class="date"></div>
+                <i class='bx bx-right-arrow-alt next' ></i>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days"></div>
+        </div>
+    </div>
+{% endblock %}
