@@ -158,7 +158,7 @@ def delete_template(request):
         return redirect("app:calendar")
 
 @login_required(login_url='app:login')
-def create_workout(request):
+def create_event(request):
     if request.method == "POST":
         data = json.loads(request.body)
         templateId = data["templateId"]
@@ -171,7 +171,7 @@ def create_workout(request):
     return JsonResponse({"message": "Event successfuly added"})
 
 @login_required(login_url='app:login')
-def get_workouts(request):
+def get_events(request):
     if request.method == "POST":
         data = json.loads(request.body)
         month = data["month"]
