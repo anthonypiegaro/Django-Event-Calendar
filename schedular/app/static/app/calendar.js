@@ -153,35 +153,35 @@ function createTemplateForm() {
 function populateTemplateForm() {
     form.setAttribute("action", "/create-template/");
     formHeader.textContent = "Create Template";
-    let workoutNameContainer = document.createElement("div");
-    workoutNameContainer.classList.add("form-floating");
-    workoutNameContainer.classList.add("mb-3");
-    let workoutNameInput = document.createElement("input");
-    workoutNameInput.setAttribute("type", "text");
-    workoutNameInput.setAttribute("id", "floatingInput");
-    workoutNameInput.setAttribute("name", "name");
-    workoutNameInput.setAttribute("placeholder", "workoutname");
-    workoutNameInput.classList.add("form-control")
-    let workoutNameLabel = document.createElement("label");
-    workoutNameLabel.setAttribute("for", "floatingInput");
-    workoutNameLabel.textContent = "Event Name";
-    workoutNameContainer.appendChild(workoutNameInput);
-    workoutNameContainer.appendChild(workoutNameLabel);
-    form.append(workoutNameContainer);
-    let workoutNotesContainer = document.createElement("div");
-    workoutNotesContainer.classList.add("form-floating");
-    workoutNotesContainer.classList.add("mb-3");
-    let workoutNotesInput = document.createElement("textarea");
-    workoutNotesInput.setAttribute("id", "floatingTextArea");
-    workoutNotesInput.setAttribute("name", "notes");
-    workoutNotesInput.setAttribute("placeholder", "Notes");
-    workoutNotesInput.classList.add("form-control")
-    let workoutNotesLabel = document.createElement("label");
-    workoutNotesLabel.setAttribute("for", "floatingTextArea");
-    workoutNotesLabel.textContent = "Event Notes";
-    workoutNotesContainer.appendChild(workoutNotesInput);
-    workoutNotesContainer.appendChild(workoutNotesLabel);
-    form.append(workoutNotesContainer);
+    let eventNameContainer = document.createElement("div");
+    eventNameContainer.classList.add("form-floating");
+    eventNameContainer.classList.add("mb-3");
+    let eventNameInput = document.createElement("input");
+    eventNameInput.setAttribute("type", "text");
+    eventNameInput.setAttribute("id", "floatingInput");
+    eventNameInput.setAttribute("name", "name");
+    eventNameInput.setAttribute("placeholder", "eventname");
+    eventNameInput.classList.add("form-control")
+    let eventNameLabel = document.createElement("label");
+    eventNameLabel.setAttribute("for", "floatingInput");
+    eventNameLabel.textContent = "Event Name";
+    eventNameContainer.appendChild(eventNameInput);
+    eventNameContainer.appendChild(eventNameLabel);
+    form.append(eventNameContainer);
+    let eventNotesContainer = document.createElement("div");
+    eventNotesContainer.classList.add("form-floating");
+    eventNotesContainer.classList.add("mb-3");
+    let eventNotesInput = document.createElement("textarea");
+    eventNotesInput.setAttribute("id", "floatingTextArea");
+    eventNotesInput.setAttribute("name", "notes");
+    eventNotesInput.setAttribute("placeholder", "Notes");
+    eventNotesInput.classList.add("form-control")
+    let eventNotesLabel = document.createElement("label");
+    eventNotesLabel.setAttribute("for", "floatingTextArea");
+    eventNotesLabel.textContent = "Event Notes";
+    eventNotesContainer.appendChild(eventNotesInput);
+    eventNotesContainer.appendChild(eventNotesLabel);
+    form.append(eventNotesContainer);
     let submitButtonContainer = document.createElement("div");
     submitButtonContainer.classList.add("d-grid");
     submitButtonContainer.classList.add("gap-2");
@@ -245,31 +245,22 @@ function drop_handler(event) {
     while (!parent.classList.contains("drop-container")) {
         parent = parent.parentElement;
     }
-    if (nodeCopy.id !== "wellness-questionaire") {
-        let deleteButton = nodeCopy.querySelector(".bx-trash");
-        nodeCopy.removeChild(deleteButton);
-    }
+    let deleteButton = nodeCopy.querySelector(".bx-trash");
+    nodeCopy.removeChild(deleteButton);
 
     nodeCopy.removeAttribute("draggable");
     parent.appendChild(nodeCopy)
 
-    let workoutYear = date.getFullYear();
-    let workoutMonth = date.getMonth() + 1;
-    let workoutDay = parent.id.split("-")[1];
-    let workoutDate = `${workoutYear}-${workoutMonth}-${workoutDay}`;
+    let eventYear = date.getFullYear();
+    let eventMonth = date.getMonth() + 1;
+    let eventDay = parent.id.split("-")[1];
+    let eventDate = `${eventYear}-${eventMonth}-${eventDay}`;
 
-    if (nodeCopy.id !== "wellness-questionaire") {
-        let data = {
-            "templateId": id,
-            "date": workoutDate,
-        };
-        sendTemplateData("workout", data);
-    } else {
-        let data = {
-            "date": workoutDate,
-        };
-        sendTemplateData("wellness-questionaire", data);
-    }
+    let data = {
+        "templateId": id,
+        "date": eventDate,
+    };
+    sendTemplateData("event", data);
 }
 
 function sendTemplateData(templateType, data) {
@@ -300,7 +291,7 @@ function draggingFunctionality() {
 }
 
 function loadDataToCalendar(month) {
-    fetch(`${window.origin}/get-workouts/`, {
+    fetch(`${window.origin}/get-events/`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify({"month": month}),

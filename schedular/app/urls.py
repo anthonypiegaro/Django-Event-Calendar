@@ -16,8 +16,8 @@ urlpatterns = [
     path("calendar/", views.calendar, name="calendar"),
     path("create-template/", views.create_template, name="create-template"),
     path("delete-template/", views.delete_template, name="delete-template"),
-    path("create-workout/", views.create_workout, name="create-workout"),
-    path("get-workouts/", views.get_workouts, name="get-workouts"),
+    path("create-event/", views.create_event, name="create-event"),
+    path("get-events/", views.get_events, name="get-events"),
     path("delete-event/", views.delete_event, name="delete-event"),
     path("day-plan/", views.day_plan, name="day-plan"),
 ]
